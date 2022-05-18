@@ -1,88 +1,121 @@
+
 package package1;
 
-import javax.xml.bind.annotation.*;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
-@XmlRootElement
-@XmlType
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Status.class, InvoiceItem.class})
+
+/**
+ * <p>Java class for anonymous complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="cost" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
+ *         &lt;element name="count" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="amount" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "cost",
+    "count",
+    "amount",
+    "name"
+})
+@XmlRootElement(name = "Invoice")
 public class Invoice {
-    @XmlElement
-    private static long orderID = 0;
-    @XmlElement
-    private Date dateOfCreate;
-    @XmlElement
-    private Date dateOfChange;
-    @XmlElement
-    private BigDecimal amount = new BigDecimal(0);
-    @XmlElement
-    private long clientID;
 
-    @XmlElement
-    private Status status;
-    @XmlElement
-    private List<InvoiceItem> invoiceItem;
+    protected float cost;
+    protected int count;
+    protected float amount;
+    @XmlElement(required = true)
+    protected String name;
 
-    public Invoice() {
-        dateOfCreate = new Date();
-        orderID++;
+    /**
+     * Gets the value of the cost property.
+     * 
+     */
+    public float getCost() {
+        return cost;
     }
 
-    public Invoice(int clientID, Status status, List<InvoiceItem> invoiceItem) {
-        dateOfCreate = new Date();
-        this.clientID = clientID;
-        this.invoiceItem = invoiceItem;
-        this.status = status;
-        for (InvoiceItem i : invoiceItem) {
-            amount = amount.add(i.getAmount());
-        }
-        orderID++;
+    /**
+     * Sets the value of the cost property.
+     * 
+     */
+    public void setCost(float value) {
+        this.cost = value;
     }
 
-    public String invoiceItem() {
-        String s = "";
-        for (InvoiceItem i : invoiceItem)
-            s += i.toString();
-        return s;
+    /**
+     * Gets the value of the count property.
+     * 
+     */
+    public int getCount() {
+        return count;
     }
 
-    @Override
-    public String toString() {
-        String dC = "Not changed";
-        if (dateOfChange != null) {
-            dC = dateOfChange.toString();
-        }
-        return "Client ID: " + clientID + "\n"
-                + "Order ID: " + orderID + "\n"
-                + "Date of create: " + dateOfCreate + "\n"
-                + "Date of change:" + dC + "\n"
-                + "Status: " + status + "\n"
-                + "Amount: " + amount + "\n"
-                + "Positions:\n\n" +
-                invoiceItem();
+    /**
+     * Sets the value of the count property.
+     * 
+     */
+    public void setCount(int value) {
+        this.count = value;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Invoice dto = (Invoice) o;
-        return clientID == dto.clientID
-                && Objects.equals(dateOfCreate, dto.dateOfCreate)
-                && Objects.equals(dateOfChange, dto.dateOfChange)
-                && Objects.equals(amount, dto.amount) && status == dto.status
-                && invoiceItem.equals(dto.invoiceItem);
-
+    /**
+     * Gets the value of the amount property.
+     * 
+     */
+    public float getAmount() {
+        return amount;
     }
 
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(dateOfCreate, dateOfChange, amount, clientID, status);
-        result = 31 * result + invoiceItem.hashCode();
-        return result;
+    /**
+     * Sets the value of the amount property.
+     * 
+     */
+    public void setAmount(float value) {
+        this.amount = value;
     }
+
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+        this.name = value;
+    }
+
 }
