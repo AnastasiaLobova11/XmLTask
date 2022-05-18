@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <invoice>
-    <cost>200.2</cost>
-    <count>2</count>
-    <amount>400.4</amount>
-    <name>bag</name>
+    <orderID>1</orderID>
+    <dateOfCreate>2022-05-18T14:46:58.836+03:00</dateOfCreate>
+    <amount>44751.39</amount>
+    <clientID>1234567</clientID>
+    <status>paid</status>
+    <invoiceItem>
+        <cost>200.2</cost>
+        <count>2</count>
+        <amount>400.4</amount>
+        <name>bag</name>
+    </invoiceItem>
+    <invoiceItem>
+        <cost>40000.99</cost>
+        <count>1</count>
+        <amount>40000.99</amount>
+        <name>phone</name>
+    </invoiceItem>
+    <invoiceItem>
+        <cost>500</cost>
+        <count>4</count>
+        <amount>2000</amount>
+        <name>paper</name>
+    </invoiceItem>
+    <invoiceItem>
+        <cost>23.5</cost>
+        <count>100</count>
+        <amount>2350.0</amount>
+        <name>pen</name>
+    </invoiceItem>
 </invoice>

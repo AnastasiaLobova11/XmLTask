@@ -1,11 +1,12 @@
+package package1;
+
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.Objects;
-
 @XmlRootElement
 @XmlType
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Invoice {
+public class InvoiceItem {
     @XmlElement
     private BigDecimal cost;
     @XmlElement
@@ -16,8 +17,7 @@ public class Invoice {
     private String name;
 
 
-
-    public Invoice(String cost, int count, String name) {
+    public InvoiceItem(String cost, int count, String name) {
         this.cost = new BigDecimal(cost);
         this.count = count;
         amount = this.cost.multiply(BigDecimal.valueOf(count));
@@ -46,14 +46,14 @@ public class Invoice {
         return "Cost: " + cost + "\n" +
                 "Count: " + count + "\n" +
                 "Amount: " + amount + "\n" +
-                "Name: "+ name+"\n\n";
+                "Name: " + name + "\n\n";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Invoice invoice = (Invoice) o;
+        InvoiceItem invoice = (InvoiceItem) o;
         return count == invoice.count &&
                 Objects.equals(cost, invoice.cost) &&
                 Objects.equals(amount, invoice.amount) &&
@@ -65,8 +65,8 @@ public class Invoice {
         return Objects.hash(cost, count, amount, name);
     }
 
-    public Invoice(){
+    public InvoiceItem() {
         this.cost = new BigDecimal(0);
-        amount =new BigDecimal(0);
+        amount = new BigDecimal(0);
     }
 }
